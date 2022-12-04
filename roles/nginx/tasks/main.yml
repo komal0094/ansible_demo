@@ -1,0 +1,16 @@
+---
+# tasks file for nginx
+- name: install nginx
+  apt: 
+    name: "{{ pkg_name }}" 
+    state: latest
+    update_cache: yes
+- name: nginx start
+  service: 
+    name: "{{ pkg_name }}"  
+    state: started
+- name: deploy html file
+  copy: 
+    src: index.html
+    dest: "{{ des_path }}"
+  notify: restart nginx       

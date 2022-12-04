@@ -1,0 +1,9 @@
+---
+- name: install-nginx ans docker
+  hosts: all
+  become: yes
+  become_user: root
+  connection: ssh
+  roles:
+   - nginx
+   - docker-swarm
